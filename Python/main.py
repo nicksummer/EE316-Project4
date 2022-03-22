@@ -10,14 +10,14 @@ import random
 import serial
 
 global label
+global c
 global game_finished
 global old_word
 global the_word
+global incorrect_guesses
 the_word = ""
 old_word = ""
-# the_word_withSpaces = ""
-#
-# numberOfGuesses = 5
+incorrect_guesses = list()
 
 serialport = serial.Serial(port="COM3", baudrate=9600, bytesize=serial.EIGHTBITS, timeout=None, xonxoff=False, stopbits=serial.STOPBITS_ONE)
 
@@ -60,6 +60,7 @@ def newgame():
     global one_per_game
     global the_word
     global old_word
+    incorrect_guesses = []
     numberOfGuesses = 5
     one_per_game = True
 
@@ -94,6 +95,7 @@ def guess(letter):
     global totalGames
     global totalWins
     global one_per_game
+    global incorrect_guesses
     letter = letter.upper()
     if numberOfGuesses < 11:
         txt = list(the_word_withSpaces)
@@ -116,8 +118,12 @@ def guess(letter):
                     print("written to port")
                     newgameprompt()
         else:
+            incorrect_guesses.append(letter)
+            print(incorrect_guesses)
             numberOfGuesses += 1
-            serialport.write(numberOfGuesses)
+            #serialport.write(numberOfGuesses)
+            c = Label(window, text=incorrect_guesses, font='consolas 24 bold')
+            c.place(x=0, y=0)
             imgLabel.config(image=photos[numberOfGuesses])
             if numberOfGuesses == 11:
                 totalGames += 1
@@ -162,6 +168,7 @@ def bindings():
     window.bind('Y', lambda event: newgame())
     window.bind('N', lambda event: gameover())
 
+
 imgLabel = Label(window)
 lblWord = StringVar()
 
@@ -187,7 +194,7 @@ while True:
         serialString = serialport.read(1)
         if serialString.decode("Ascii").upper() == serialString.decode("Ascii"):
             with keyboard.pressed(Key.shift):
-                keyboard.tap(serialString.decode("Ascii").lower())
+               keyboard.tap(serialString.decode("Ascii").lower())
         else:
             keyboard.tap(serialString.decode("Ascii"))
         print(serialString.decode(encoding='UTF-8'))
