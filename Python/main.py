@@ -58,6 +58,7 @@ def newgame():
     global one_per_game
     global the_word
     global old_word
+    incorrect_guesses_list = []
     incorrect_guesses = []
     numberOfGuesses = 6
     one_per_game = True
