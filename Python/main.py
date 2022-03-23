@@ -8,6 +8,7 @@ from pynput.keyboard import Key, Controller
 
 import random
 import serial
+import string
 
 global label
 global c
@@ -17,7 +18,7 @@ global the_word
 global incorrect_guesses
 the_word = ""
 old_word = ""
-incorrect_guesses = list()
+incorrect_guesses_list = list()
 
 serialport = serial.Serial(port="COM3", baudrate=9600, bytesize=serial.EIGHTBITS, timeout=None, xonxoff=False, stopbits=serial.STOPBITS_ONE)
 
@@ -31,12 +32,9 @@ window.title('EE316 HANGMAN')
 window.minsize(675, 100)
 window.maxsize(1000, 1000)
 
-photos = [PhotoImage(file="images/hang0.png"), PhotoImage(file="images/hang1.png"), PhotoImage(file="images/hang2.png"),
-          PhotoImage(file="images/hang3.png"), PhotoImage(file="images/hang4.png"), PhotoImage(file="images/hang5.png"),
-          PhotoImage(file="images/hang6.png"), PhotoImage(file="images/hang7.png"), PhotoImage(file="images/hang8.png"),
-          PhotoImage(file="images/hang9.png"), PhotoImage(file="images/hang10.png"),
-          PhotoImage(file="images/hang11.png")]
-
+photos = [PhotoImage(file="images/hang11.png"), PhotoImage(file="images/hang10.png"),
+          PhotoImage(file="images/hang9.png"), PhotoImage(file="images/hang8.png"), PhotoImage(file="images/hang7.png"),
+          PhotoImage(file="images/hang6.png"), PhotoImage(file="images/hang5.png")]
 
 def wordlistgenerator():
     with open('wordlist.txt') as f:
@@ -61,12 +59,12 @@ def newgame():
     global the_word
     global old_word
     incorrect_guesses = []
-    numberOfGuesses = 5
+    numberOfGuesses = 6
     one_per_game = True
 
     b.place_forget()
 
-    imgLabel.config(image=photos[5])
+    imgLabel.config(image=photos[6])
 
     while old_word == the_word:
         the_word = random.choice(wordlistgenerator())
@@ -95,17 +93,17 @@ def guess(letter):
     global totalGames
     global totalWins
     global one_per_game
-    global incorrect_guesses
+    global incorrect_guesses_list
     letter = letter.upper()
-    if numberOfGuesses < 11:
+    if numberOfGuesses > 0:
         txt = list(the_word_withSpaces)
-        guessed = list(lblWord.get())
+        guessedlist = list(lblWord.get())
         if the_word_withSpaces.count(letter) > 0:
             for d in range(len(txt)):
-
                 if txt[d] == letter:
-                    guessed[d] = letter
-                lblWord.set("".join(guessed))
+                    guessedlist[d] = letter
+                lblWord.set("".join(guessedlist))
+                guessedstr = ''.join(guessedlist)
                 if lblWord.get() == the_word_withSpaces and one_per_game == True:
                     totalGames += 1
                     totalWins += 1
@@ -117,15 +115,25 @@ def guess(letter):
                     serialport.write(winStringBytes)
                     print("written to port")
                     newgameprompt()
+            print(guessedstr)
+            guessedencoded = str.encode(guessedstr)
+            type(guessedencoded)
+            # serialport.write(guessedencoded)
         else:
-            incorrect_guesses.append(letter)
-            print(incorrect_guesses)
-            numberOfGuesses += 1
-            #serialport.write(numberOfGuesses)
-            c = Label(window, text=incorrect_guesses, font='consolas 24 bold')
+            incorrect_guesses_list.append(letter)
+            incorrect_guesses_str = ''.join(incorrect_guesses_list)
+
+            guessed_letters_and_left_guesses = incorrect_guesses_str + str(numberOfGuesses)
+            print(guessed_letters_and_left_guesses)
+            guessed_letters_and_left_guesses = str.encode(guessed_letters_and_left_guesses)
+            type(guessed_letters_and_left_guesses)
+            #serialport.write(guessed_letters_and_left_guesses)
+
+            numberOfGuesses -= 1
+            c = Label(window, text=incorrect_guesses_list, font='consolas 24 bold')
             c.place(x=0, y=0)
             imgLabel.config(image=photos[numberOfGuesses])
-            if numberOfGuesses == 11:
+            if numberOfGuesses == 0:
                 totalGames += 1
                 lossString = "Sorry! The correct word was %s. You have solved %d puzzles out of %d" % (
                     the_word, totalWins, totalGames)
@@ -138,7 +146,6 @@ def guess(letter):
 
 
 def bindings():
-
     window.bind('a', lambda event: guess("a"))
     window.bind('b', lambda event: guess("b"))
     window.bind('c', lambda event: guess("c"))
@@ -182,7 +189,6 @@ for c in ascii_uppercase:
     Button(window, text=c, command=lambda c=c: guess(c), font='Helvetica 18', width=4).grid(row=2 + n // 9,column=n % 9)
 
     n += 1
-
 
 
 bindings()
