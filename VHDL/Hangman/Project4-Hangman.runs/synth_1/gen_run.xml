@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7z007sclg400-1" LaunchTime="1647901117">
+  <File Type="PA-TCL" Name="Top_Level_Hangman.tcl"/>
+  <File Type="REPORTS-TCL" Name="Top_Level_Hangman_reports.tcl"/>
+  <File Type="RDS-RDS" Name="Top_Level_Hangman.vds"/>
+  <File Type="RDS-UTIL" Name="Top_Level_Hangman_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="Top_Level_Hangman_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="Top_Level_Hangman.dcp"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/Downloads/debounce.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../GitHub/EE316-Project4/VHDL/new/Hangman/Hangman.srcs/sources_1/imports/Downloads/debounce.vhd"/>
+        <Attr Name="ImportTime" Val="1647900396"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/Downloads/ps2_keyboard.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../GitHub/EE316-Project4/VHDL/new/Hangman/Hangman.srcs/sources_1/imports/Downloads/ps2_keyboard.vhd"/>
+        <Attr Name="ImportTime" Val="1647900396"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../GitHub/EE316-Project4/VHDL/new/Hangman/Hangman.srcs/sources_1/imports/Downloads/ps2_keyboard_to_ascii.vhd"/>
+        <Attr Name="ImportTime" Val="1647900396"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/sources_1/imports/Project4_Hangman/uart.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../GitHub/EE316-Project4/VHDL/new/Hangman/Hangman.srcs/sources_1/imports/Project4_Hangman/uart.vhd"/>
+        <Attr Name="ImportTime" Val="1647900396"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/sources_1/new/Top_Level_PS2_TEST.vhd">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../GitHub/EE316-Project4/VHDL/new/Hangman/Hangman.srcs/sources_1/new/Top_Level_PS2_TEST.vhd"/>
+        <Attr Name="ImportTime" Val="1647900396"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/sources_1/new/Counter.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../GitHub/EE316-Project4/VHDL/new/Hangman/Hangman.srcs/sources_1/new/Counter.vhd"/>
+        <Attr Name="ImportTime" Val="1647900396"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/imports/sources_1/new/Debouncer.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../GitHub/EE316-Project4/VHDL/new/Hangman/Hangman.srcs/sources_1/new/Debouncer.vhd"/>
+        <Attr Name="ImportTime" Val="1647900396"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="Top_Level_Hangman"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/new/Cora-Z7-07S-Master.xdc">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../GitHub/EE316-Project4/VHDL/new/Hangman/Hangman.srcs/constrs_1/new/Cora-Z7-07S-Master.xdc"/>
+        <Attr Name="ImportTime" Val="1647900396"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>

@@ -1,0 +1,247 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+----------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+| Date         : Wed Mar 23 23:03:55 2022
+| Host         : DESKTOP-L4I6AU1 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Top_Level_Hangman_control_sets_placed.rpt
+| Design       : Top_Level_Hangman
+| Device       : xc7z007s
+----------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |   169 |
+|    Minimum number of control sets                        |   169 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    77 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |   169 |
+| >= 0 to < 4        |     2 |
+| >= 4 to < 6        |     4 |
+| >= 6 to < 8        |     6 |
+| >= 8 to < 10       |   148 |
+| >= 10 to < 12      |     3 |
+| >= 12 to < 14      |     1 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     5 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             102 |           41 |
+| No           | No                    | Yes                    |              18 |            8 |
+| No           | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | No                     |              59 |           18 |
+| Yes          | No                    | Yes                    |               7 |            2 |
+| Yes          | Yes                   | No                     |            1297 |          426 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++--------------------------------------------------------+------------------------------------------------------------------------------+----------------------------------------------------------------+------------------+----------------+
+|                      Clock Signal                      |                                 Enable Signal                                |                        Set/Reset Signal                        | Slice Load Count | Bel Load Count |
++--------------------------------------------------------+------------------------------------------------------------------------------+----------------------------------------------------------------+------------------+----------------+
+|  clk_IBUF_BUFG                                         | INST_UART/tx_out_i_1_n_0                                                     | INST_RESET_DELAY/SR[0]                                         |                1 |              1 |
+|  clk_IBUF_BUFG                                         | do_character                                                                 |                                                                |                1 |              2 |
+|  clk_IBUF_BUFG                                         | INST_UART/rx_cnt[3]_i_2_n_0                                                  | INST_RESET_DELAY/oRESET_reg_0                                  |                1 |              4 |
+|  clk_IBUF_BUFG                                         | INST_UART/rx_sample_cnt[3]_i_2_n_0                                           | INST_UART/rx_sample_cnt                                        |                2 |              4 |
+|  clk_IBUF_BUFG                                         | INST_UART/tx_cnt[3]_i_2_n_0                                                  | INST_UART/tx_cnt[3]_i_1_n_0                                    |                2 |              4 |
+|  clk_IBUF_BUFG                                         | do_character                                                                 | INST_UART/rx_data_reg[6]_0[0]                                  |                3 |              5 |
+|  clk_IBUF_BUFG                                         | Scroll_Counter[5]_i_1_n_0                                                    | INST_UART/rx_data_reg[6]_0[0]                                  |                1 |              6 |
+|  clk_IBUF_BUFG                                         | INST_LCD/inst_i2cm/the_handshake1                                            | INST_RESET_DELAY/SR[0]                                         |                2 |              7 |
+|  clk_IBUF_BUFG                                         | INST_PS2_Keyboard/ascii_code[6]_i_1_n_0                                      |                                                                |                1 |              7 |
+|  clk_IBUF_BUFG                                         | INST_PS2_Keyboard/E[0]                                                       |                                                                |                2 |              7 |
+|  clk_IBUF_BUFG                                         | probe2                                                                       | INST_RESET_DELAY/SR[0]                                         |                1 |              7 |
+|  clk_IBUF_BUFG                                         | INST_PS2_Keyboard/ps2_keyboard_0/FSM_sequential_state_reg[0]_0               |                                                                |                4 |              7 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[1]_6[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_9[0]                                              | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_8[0]                                              | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_LCD/inst_i2cm/addr_rw0                                                  |                                                                |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_PS2_Keyboard/ps2_keyboard_0/ps2_code_new0                               |                                                                |                2 |              8 |
+|  clk_IBUF_BUFG                                         | probe1                                                                       | INST_RESET_DELAY/uld_rx_data_sig_reg_0[0]                      |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[0]_4[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[0]_6[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[1]_0[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[1]_4[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[0][0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[0]_5[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[1]_5[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_14[0]                                          | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[0]_1[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[2]_0[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[2]_2[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[2]_3[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[2]_5[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[1]_1[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[1]_3[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[0]_0[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[1][0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[2]_1[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[1]_2[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[1]_7[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[2][0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[2]_4[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[0]_2[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[0]_3[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_11[0]                                          | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3][0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_15[0]                                          | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[2]_8[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                5 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[5]_1[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_2[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[6]_6[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                5 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_11[0]                                          | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_16[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_17[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_2[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[6]_1[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[5]_7[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[4]_4[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_1[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_18[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_20[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_5[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_12[0]                                          | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_9[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[4]_5[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_3[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[2]_7[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[4]_0[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[4]_1[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[4]_8[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[5][0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[5]_4[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[6]_2[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[5]_6[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[6]_3[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[4]_2[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[4]_6[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[6]_7[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_10[0]                                          | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_8[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_12[0]                                          | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_13[0]                                          | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_19[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[4][0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                8 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[6]_5[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                7 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_1[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                5 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[4]_3[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_7[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[5]_3[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_6[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[5]_5[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[5]_8[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[6][0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[6]_0[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[6]_4[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[4]_7[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[5]_9[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[2]_6[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0][0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_10[0]                                          | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_0[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[5]_0[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_13[0]                                          | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_0[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                6 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[3]_4[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                6 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[4]_9[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iCol_sig_reg[5]_2[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_28[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_3[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_30[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_27[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_6[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_8[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                6 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_29[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_25[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_22[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_26[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_1[0]                                              | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_11[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_16[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                6 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_10[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_13[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_17[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                6 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_4[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_20[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                5 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_21[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_18[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_24[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_29[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_3[0]                                              | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_25[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_30[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_21[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_32[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_34[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_24[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                7 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_35[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_5[0]                                              | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_6[0]                                              | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_7[0]                                              | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg[0]                                                | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_15[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_22[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                6 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_19[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_23[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                5 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_36[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_23[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                7 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_28[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_27[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_0[0]                                              | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_31[0]                                          | INST_UART/rx_data_reg[7]_2[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_14[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_2[0]                                              | INST_UART/rx_data_reg[7]_1[0]                                  |                4 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_26[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                5 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_7[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_12[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_31[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_33[0]                                             | INST_UART/rx_data_reg[7]_1[0]                                  |                2 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/do_character_reg_4[0]                                              | INST_UART/rx_data_reg[7]_1[0]                                  |                1 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_9[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                7 |              8 |
+|  clk_IBUF_BUFG                                         | INST_UART/LCD_iRow_sig_reg[0]_5[0]                                           | INST_UART/rx_data_reg[7]_1[0]                                  |                3 |              8 |
+|  clk_IBUF_BUFG                                         | INST_LCD/data_wr_sig[7]_i_1_n_0                                              | INST_RESET_DELAY/SR[0]                                         |                5 |              9 |
+|  clk_IBUF_BUFG                                         | INST_PS2_Keyboard/ps2_keyboard_0/debounce_ps2_clk/sel                        | INST_PS2_Keyboard/ps2_keyboard_0/debounce_ps2_clk/counter_set  |                3 |             10 |
+|  clk_IBUF_BUFG                                         | INST_PS2_Keyboard/ps2_keyboard_0/debounce_ps2_data/counter_out[9]_i_2__0_n_0 | INST_PS2_Keyboard/ps2_keyboard_0/debounce_ps2_data/counter_set |                2 |             10 |
+| ~INST_PS2_Keyboard/ps2_keyboard_0/debounce_ps2_clk/CLK |                                                                              |                                                                |                3 |             11 |
+|  clk_IBUF_BUFG                                         | INST_PS2_Keyboard/ps2_keyboard_0/count_idle[0]_i_2_n_0                       | INST_PS2_Keyboard/ps2_keyboard_0/debounce_ps2_clk/clear        |                4 |             13 |
+|  clk_IBUF_BUFG                                         |                                                                              | INST_RESET_DELAY/SR[0]                                         |                8 |             18 |
+|  clk_IBUF_BUFG                                         | INST_RESET_DELAY/sel                                                         |                                                                |                5 |             20 |
+|  clk_IBUF_BUFG                                         | INST_LCD/inst_i2cm/E[0]                                                      | INST_RESET_DELAY/SR[0]                                         |                5 |             32 |
+|  clk_IBUF_BUFG                                         | INST_LCD/delay[0]_i_1_n_0                                                    | INST_RESET_DELAY/SR[0]                                         |                8 |             32 |
+|  clk_IBUF_BUFG                                         |                                                                              |                                                                |               38 |             91 |
++--------------------------------------------------------+------------------------------------------------------------------------------+----------------------------------------------------------------+------------------+----------------+
+
+

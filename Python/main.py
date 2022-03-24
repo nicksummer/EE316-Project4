@@ -8,6 +8,7 @@ from pynput.keyboard import Key, Controller
 
 import random
 import serial
+import time
 import string
 
 global label
@@ -16,16 +17,19 @@ global game_finished
 global old_word
 global the_word
 global incorrect_guesses
+global onegameplayed
+
 the_word = ""
 old_word = ""
 incorrect_guesses_list = list()
 
-serialport = serial.Serial(port="COM3", baudrate=9600, bytesize=serial.EIGHTBITS, timeout=None, xonxoff=False, stopbits=serial.STOPBITS_ONE)
+serialport = serial.Serial(port="COM5", baudrate=115200, bytesize=serial.EIGHTBITS, timeout=None, xonxoff=False, stopbits=serial.STOPBITS_ONE)
 
 keyboard = Controller()
 
 totalWins = 0
 totalGames = 0
+onegameplayed = 0
 
 window = Tk()
 window.title('EE316 HANGMAN')
@@ -47,7 +51,13 @@ def wordlistgenerator():
 
 def newgameprompt():
     global b
-    b = Button(window, text="New Game? (Y)es/(N)o", command=lambda: [newgame(), b.place_forget()], font="Helvetica 18 bold")
+    global onegameplayed
+    newgame = "/New Game? (Y)es or (N)o"
+    b = Button(window, text=newgame, command=lambda: [newgame(), b.place_forget()], font="Helvetica 18 bold")
+    newgameencoded = str.encode(newgame)
+    type(newgameencoded)
+    print(newgameencoded)
+    serialport.write(newgameencoded)
     b.place(x=0, y=0)
 
 
@@ -58,8 +68,8 @@ def newgame():
     global one_per_game
     global the_word
     global old_word
-    incorrect_guesses_list = []
-    incorrect_guesses = []
+    incorrect_guesses_list.clear()
+    print(incorrect_guesses_list)
     numberOfGuesses = 6
     one_per_game = True
 
@@ -72,16 +82,39 @@ def newgame():
 
     old_word = the_word
 
+    guessedlettersclear = str.encode('.')
+    type(guessedlettersclear)
+    serialport.write(guessedlettersclear)
+
     print(the_word)
     the_word_withSpaces = " ".join(the_word)
     lblWord.set(' '.join("_" * len(the_word)))
+    blankspaces = []
+    for i in range(len(the_word)):
+        blankspaces.append("_")
+    blankspaces_tostr = "".join(blankspaces)
+    blankspacesencoded = str.encode('/' + blankspaces_tostr)
+    type(blankspacesencoded)
+    serialport.write(blankspacesencoded)
+
 
 
 def gameover():
     b.place_forget()
     imgLabel.destroy()
     label.destroy()
+    clearencoded = str.encode('/')
+    type(clearencoded)
+    serialport.write(clearencoded)
 
+    pregame = "( %d out of %d correct)" %(totalWins, totalGames)
+    pregameencoded = str.encode(pregame)
+    type(pregameencoded)
+    serialport.write(pregameencoded)
+    window.after(7000)
+    gameoverstr = "Game Over"
+    gameoverstrencoded = str.encode('/' + gameoverstr)
+    serialport.write(gameoverstrencoded)
     gameoverlabel = Label(window, text="Game Over", font=("Helvetica 90 bold"))
     gameoverlabel.place(x=0, y=0)
 
@@ -106,42 +139,55 @@ def guess(letter):
                 lblWord.set("".join(guessedlist))
                 guessedstr = ''.join(guessedlist)
                 if lblWord.get() == the_word_withSpaces and one_per_game == True:
+                    incorrect_guesses_list = []
                     totalGames += 1
                     totalWins += 1
-                    winString = "Well done! you have solved %d puzzles out of %d" % (totalWins, totalGames)
-                    messagebox.showinfo("Hangman", winString)
+                    winString = "/Well done! you have solved %d puzzles out of %d" % (totalWins, totalGames)
+                    #messagebox.showinfo("Hangman", winString)
                     winStringBytes = str.encode(winString)
                     type(winStringBytes)
-                    one_per_game = False
                     serialport.write(winStringBytes)
+                    one_per_game = False
                     print("written to port")
+                    window.update()
+                    window.after(16500)
                     newgameprompt()
-            print(guessedstr)
-            guessedencoded = str.encode(guessedstr)
-            type(guessedencoded)
-            # serialport.write(guessedencoded)
+                # print(guessedstr)
+                elif one_per_game == True:
+                    guessedencoded = str.encode(guessedstr.replace(" ", ""))
+                    type(guessedencoded)
+                    clearencoded = str.encode('/')
+                    type(clearencoded)
+                    serialport.write(clearencoded)
+                    serialport.write(guessedencoded)
         else:
+            incorrect_guesses_list1 =incorrect_guesses_list
             incorrect_guesses_list.append(letter)
             incorrect_guesses_str = ''.join(incorrect_guesses_list)
 
-            guessed_letters_and_left_guesses = incorrect_guesses_str + str(numberOfGuesses)
+            guessed_letters_and_left_guesses = incorrect_guesses_str + str(numberOfGuesses - 1)
             print(guessed_letters_and_left_guesses)
-            guessed_letters_and_left_guesses = str.encode(guessed_letters_and_left_guesses)
+            guessed_letters_and_left_guesses = str.encode('.' + guessed_letters_and_left_guesses)
             type(guessed_letters_and_left_guesses)
-            #serialport.write(guessed_letters_and_left_guesses)
+            guessedlettersclear = str.encode('.')
+            type(guessedlettersclear)
+            serialport.write(guessedlettersclear)
+            serialport.write(guessed_letters_and_left_guesses)
 
             numberOfGuesses -= 1
-            c = Label(window, text=incorrect_guesses_list, font='consolas 24 bold')
+            c = Label(window, text=incorrect_guesses_list1, font='consolas 24 bold')
             c.place(x=0, y=0)
             imgLabel.config(image=photos[numberOfGuesses])
             if numberOfGuesses == 0:
                 totalGames += 1
-                lossString = "Sorry! The correct word was %s. You have solved %d puzzles out of %d" % (
+                lossString = "/Sorry! The correct word was %s, You have solved %d puzzles out of %d" % (
                     the_word, totalWins, totalGames)
-                messagebox.showwarning("Hangman", lossString)
+                #messagebox.showwarning("Hangman", lossString)
                 lossStringBytes = str.encode(lossString)
                 type(lossStringBytes)
                 serialport.write(lossStringBytes)
+                window.update()
+                window.after(34500)
                 print("written to port")
                 newgameprompt()
 
@@ -190,7 +236,6 @@ for c in ascii_uppercase:
     Button(window, text=c, command=lambda c=c: guess(c), font='Helvetica 18', width=4).grid(row=2 + n // 9,column=n % 9)
 
     n += 1
-
 
 bindings()
 newgameprompt()
