@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2019.1 (64-bit)
+# SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
+# IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
+# Start of session at: Sun Mar 27 17:23:58 2022
+# Process ID: 11096
+# Current directory: C:/Users/nicks/Documents/EE136-Project4-Hangman/Project4-Hangman/Project4-Hangman.runs/synth_2
+# Command line: vivado.exe -log Top_Level_Hangman.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top_Level_Hangman.tcl
+# Log file: C:/Users/nicks/Documents/EE136-Project4-Hangman/Project4-Hangman/Project4-Hangman.runs/synth_2/Top_Level_Hangman.vds
+# Journal file: C:/Users/nicks/Documents/EE136-Project4-Hangman/Project4-Hangman/Project4-Hangman.runs/synth_2\vivado.jou
+#-----------------------------------------------------------
+source Top_Level_Hangman.tcl -notrace
