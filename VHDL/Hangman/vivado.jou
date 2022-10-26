@@ -1,0 +1,15 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Tue Oct 25 19:53:58 2022
+# Process ID: 28164
+# Current directory: C:/Users/nicks/Documents/GitHub/EE316-Project4/VHDL/Hangman
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent15492 C:\Users\nicks\Documents\GitHub\EE316-Project4\VHDL\Hangman\Hangman.xpr
+# Log file: C:/Users/nicks/Documents/GitHub/EE316-Project4/VHDL/Hangman/vivado.log
+# Journal file: C:/Users/nicks/Documents/GitHub/EE316-Project4/VHDL/Hangman\vivado.jou
+# Running On: DESKTOP-OJ12GV1, OS: Windows, CPU Frequency: 3793 MHz, CPU Physical cores: 32, Host memory: 34227 MB
+#-----------------------------------------------------------
+start_gui
+open_project -read_only C:/Users/nicks/Documents/GitHub/EE316-Project4/VHDL/Hangman/Hangman.xpr
+update_compile_order -fileset sources_1
